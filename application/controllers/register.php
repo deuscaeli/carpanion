@@ -21,28 +21,37 @@ class Register extends CI_Controller {
         $password=htmlspecialchars($_POST['password']);
         $confirm_password=htmlspecialchars($_POST['confirm_password']);
         $gender=htmlspecialchars($_POST['gender']);
+        $licence=htmlspecialchars($_POST['licence']);
 
-        $folder = "upload/person/".time()."/";
-        if(isset($_FILES["licence"]["tmp_name"])){
-            if(!is_dir($folder)) {
-                mkdir($folder, 0777, true);
-            }
+        // $folder = "upload/person/".time()."/";
+        // if(isset($_FILES["licence"]["tmp_name"])){
+        //     if(!is_dir($folder)) {
+        //         mkdir($folder, 0777, true);
+        //     }
 
-            $file_name=$_FILES["licence"]["name"];
-            $file_tmp=$_FILES["licence"]["tmp_name"];
-            $ext=pathinfo($file_name,PATHINFO_EXTENSION);
-            if(empty($file_name)){
-                $licence = '';
-            }else{
-                move_uploaded_file($_FILES["licence"]["tmp_name"],$folder.$file_name);
-                $licence=$folder.$file_name;
-            }
-        }
+        //     $file_name=$_FILES["licence"]["name"];
+        //     $file_tmp=$_FILES["licence"]["tmp_name"];
+        //     $ext=pathinfo($file_name,PATHINFO_EXTENSION);
+        //     if(empty($file_name)){
+        //         $licence = '';
+        //     }else{
+        //         move_uploaded_file($_FILES["licence"]["tmp_name"],$folder.$file_name);
+        //         $licence=$folder.$file_name;
+        //     }
+        // }
 
 
         if(empty($name)){
             $error = true;
             $message['name'] = "Name is required.";
+        }
+        
+        if(!empty($licence)){
+            $res = $this->db->get_where('customer',array('licence'=>$licence))->num_rows();
+            if($res==1){
+                $error = true;
+                $message['licence'] = "Licence number already exists";
+            }
         }
 
         if(empty($email)){

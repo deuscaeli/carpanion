@@ -50,7 +50,7 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="licence">Licence</label>
-                                    <input type="file" class="form-control" id="licence" name="licence[]" onchange="validateFileType('url','0')" accept='image/*'>
+                                    <input type="text" class="form-control" id="licence" name="licence" placeholder="Enter your licence number">
                                     <span id="err_licence" class="text-danger err_span"></span>
                                 </div>
                             </div>
@@ -105,7 +105,7 @@
             $(".err_span").html("");
             event.preventDefault();
             var formData = new FormData();
-            formData.append('licence', $('#licence')[0].files[0]);
+            formData.append('licence', $('#licence').val());
             formData.append('name', $('#name').val());
             formData.append('email', $('#email').val());
             formData.append('phone', $('#phone').val());

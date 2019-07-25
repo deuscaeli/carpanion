@@ -14,14 +14,14 @@
 <section class="ftco-section ftco-no-pt ftco-no-pb">
 	<div class="container-fluid px-0">
 	    <div class="row d-flex no-gutters">
-            <div class="col-md-6 order-md-last ftco-animate makereservation p-4 p-md-5 pt-5" style="background:#fff;">
+            <div class="col-md-12 order-md-last ftco-animate makereservation p-4 p-md-5 pt-5" style="background:#fff;">
                 <div class="py-md-5">
                     <div class="heading-section ftco-animate mb-5">
                         <h2 class="mb-4">Find a ride</h2>
                     </div>
                     <form action="#" id="find_ride">
                         <div class="row">
-                            <div class="col-md-12">
+                            <div class="col-md-3">
                                 <div class="form-group">
                                     <label for="leaving_from">Leaving from</label>
                                     <input type="text" class="form-control" name="leaving_from" id="leaving_from" onchange="emptylatlng()" placeholder="Enter Leaving from">
@@ -29,7 +29,7 @@
                                     <span id="err_leaving_from" class="text-danger err_span"></span>
                                 </div>
                             </div>
-                            <div class="col-md-12">
+                            <div class="col-md-3">
                                 <div class="form-group">
                                     <label for="destination">Destination</label>
                                     <input type="text" class="form-control" name="destination" id="destination" onchange="emptylatlng()" placeholder="Enter Destination">
@@ -37,14 +37,14 @@
                                     <span id="err_destination" class="text-danger err_span"></span>
                                 </div>
                             </div>
-                            <div class="col-md-12">
+                            <div class="col-md-3">
                                 <div class="form-group">
                                     <label for="leaving_date">Leaving date</label>
                                     <input type="text" class="form-control datepicker" readonly name="leaving_date" id="leaving_date" placeholder="Enter leaving date">
                                     <span id="err_leaving_date" class="text-danger err_span"></span>
                                 </div>
                             </div>
-                            <div class="col-md-12 mt-3">
+                            <div class="col-md-3 mt-5">
                                 <div class="form-group">
                                     <input type="hidden" name="<?=$this->security->get_csrf_token_name();?>" value="<?=$this->security->get_csrf_hash();?>" />
                                     <input type="hidden" name="leaving_longitude" id="leaving_longitude" value="" />
@@ -52,8 +52,8 @@
                                     <input type="hidden" name="leaving_latitude" id="leaving_latitude" value="" />
                                     <input type="hidden" name="destination_longitude" id="destination_longitude" value="" />
                                     <input type="hidden" name="destination_latitude" id="destination_latitude" value="" />
-                                    <button type="submit" class="btn btn-primary py-3 px-5">Find ride</button>
-                                    <button type="reset" class="btn btn-danger py-3 px-5">Reset</button>
+                                    <button type="submit" class="btn btn-primary py-2 px-3">Find ride</button>
+                                    <button type="reset" class="btn btn-danger py-2 px-3">Reset</button>
                                 </div>
                             </div>
                             <div class="col-md-12" id="response"></div>
@@ -75,6 +75,7 @@
 
 <script>
     $(document).ready(function() {
+        showall();
         $("#find_ride").submit(function(event){
             $(".err_span").html("");
             event.preventDefault();
@@ -86,7 +87,7 @@
                 dataType : "json",
                 success: function (response){
                     if(response.status){
-                        $("#find_ride").hide();
+                        // $("#find_ride").hide();
                         $("#result").html(response.message);
                         
                     }else{
@@ -105,10 +106,28 @@
 
     });
 
+    function showall(){
+        $.ajax({
+            type: "GET",
+            url: "<?php echo base_url('find_ride/displayrecords') ?>",
+            dataType : "json",
+            success: function (response){
+                if(response.status){
+                    // $("#find_ride").hide();
+                    $("#result").html(response.message);
+                }else{
+                    $("#err_leaving_from").html(response.message.leaving_from);
+                    $("#err_destination").html(response.message.destination);
+                    $("#err_leaving_date").html(response.message.leaving_date);
+                }
+            }
+        });
+    }
+
     function booking(id){
         $(".err_span").html("");
         $("#ride_id").val(id);
-        var thidata = $("#find_ride").serialize();
+        var thidata = $("#ride_id").serialize();
         $.ajax({
             type: "POST",
             url: "<?php echo base_url('find_ride/find_ride_action_perform') ?>",

@@ -1,0 +1,61 @@
+<!DOCTYPE html>  <!-- HTML5 document type -->
+<html>
+<head>
+  <!-- use go-debug.js when developing and go.js when deploying -->
+  <script src="https://unpkg.com/gojs/release/go-debug.js"></script>
+</head>
+<body>
+<!-- The DIV for a Diagram needs an explicit size or else we will not see anything.
+     In this case we also add a background color so we can see that area. -->
+<div id="myDiagramDiv" style="width:1000px; height:500px; background-color: #DAE4E4;"></div>
+<script>
+var $ = go.GraphObject.make;
+var myDiagram =
+  $(go.Diagram, "myDiagramDiv",
+    {
+      "undoManager.isEnabled": true // enable Ctrl-Z to undo and Ctrl-Y to redo
+    });
+
+var myModel = $(go.Model);
+// in the model data, each node is represented by a JavaScript object:
+myModel.nodeDataArray = [
+  { key: "Rider" },
+  { key: "Driver" },
+  { key: "Location" }
+];
+myDiagram.model = myModel;
+
+myDiagram.nodeTemplate =
+  $(go.Node,
+    $(go.TextBlock,
+      // TextBlock.text is bound to Node.data.key
+      new go.Binding("text", "key"))
+  );
+
+ // define a simple Node template
+      myDiagram.nodeTemplate =
+        $(go.Node, "Auto",  // the Shape will go around the TextBlock
+          $(go.Shape, "Circle", { strokeWidth: 0, fill: "white" },
+            // Shape.fill is bound to Node.data.color
+            new go.Binding("fill", "color")),
+          $(go.TextBlock,
+            { margin: 8 },  // some room around the text
+            // TextBlock.text is bound to Node.data.key
+            new go.Binding("text", "key"))
+        );
+// but use the default Link template, by not setting Diagram.linkTemplate
+
+      // create the model data that will be represented by Nodes and Links
+      myDiagram.model = new go.GraphLinksModel(
+        [
+          { key: "Rider", color: "lightblue" },
+          { key: "Driver", color: "orange" },
+          { key: "Location", color: "lightgreen" }
+        ],
+        [
+          { from: "Rider", to: "Driver" },
+          { from: "Rider", to: "Location" },
+          { from: "Driver", to: "Location" }
+        ]);
+</script>
+</body>

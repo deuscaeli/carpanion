@@ -24,9 +24,18 @@ class Offer_ride extends CI_Controller {
         $destination_longitude=htmlspecialchars($_POST['destination_longitude']);
         $destination_latitude=htmlspecialchars($_POST['destination_latitude']);
         $customer_id=$this->session->userdata('id');
+        $liacence_update=$this->session->userdata('licence');
 
         if(empty($customer_id)){
 			$message['customer_id'] = "Login is required.";
+			$response['status']=False;
+            $response['message']=$message;
+            echo json_encode($response);
+            exit();
+        }
+        
+        if(empty($liacence_update)){
+			$message['liacence_update'] = "<div class='alert alert-danger' style='width: 100%'> <i class='fa fa-check-circle'></i> Licence is required. Please update licence <button type='button' class='close' data-dismiss='alert' aria-label='Close'> <span aria-hidden='true'>×</span></button></div>";
 			$response['status']=False;
             $response['message']=$message;
             echo json_encode($response);

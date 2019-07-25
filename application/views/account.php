@@ -17,13 +17,95 @@
             <div class="col-sm-10 wrap-about ftco-animate text-center">
         <div class="heading-section mb-4 text-center">
         <span class="subheading">Account</span>
-      </div>
+    </div>
+    <form id="register_customer" novalidate  enctype="multipart/form-data">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" class="form-control" id="name" name="name" value="<?=$data->name;?>" placeholder="Enter your name">
+                    <span id="err_name" class="text-danger err_span"></span>
+                </div>
+            </div>
+            
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="email">Email id</label>
+                    <input type="email" class="form-control" id="email" name="email" value="<?=$data->email;?>" placeholder="Enter your email id">
+                    <span id="err_email" class="text-danger err_span"></span>
+                </div>
+            </div>
 
-                <p> <br>
-                <input type="text" id="changed_email" name="changed_email" placeholder=" Enter Destination"> &nbsp;&nbsp; <button type="submit" id="change_email" class="btn btn-primary py-1 px-3">Change Most Recent Offer's Destination</button> <br/> <br/>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="phone">Phone number</label>
+                    <input type="text" class="form-control" maxlength="10" value="<?=$data->phone;?>" onkeypress="return isNumberKey(event)" id="phone" name="phone" placeholder="Enter your phone number">
+                    <span id="err_phone" class="text-danger err_span"></span>
+                </div>
+            </div>
 
-                <button type="submit" id="delete_account" name="delete_account" class=" py-1 px-3">Delete All My Posts</button></p>
-    <div class="col-md-12" id="response"></div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="licence">Licence</label>
+                    <input type="text" class="form-control" id="licence" value="<?=$data->licence;?>" name="licence" placeholder="Enter your licence number">
+                    <span id="err_licence" class="text-danger err_span"></span>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="gender">Gender</label>
+                    <select name="gender" id="gender" class="form-control">
+                        <?php if($data->gender=="Male"){
+                            echo '<option value="Male" selected>Male</option>
+                            <option value="Female">Female</option>';
+                        }else{
+                            echo '<option value="Male" >Male</option>
+                            <option value="Female" selected>Female</option>';
+                        }?>
+                    </select>
+                    <span id="err_gender" class="text-danger err_span"></span>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" id="password" name="password" placeholder="Enter your password">
+                    <span id="err_password" class="text-danger err_span"></span>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="confirm_password">Confirm password</label>
+                    <input type="password" class="form-control" id="confirm_password" name="confirm_password" placeholder="Confirm your password">
+                    <span id="err_confirm_password" class="text-danger err_span"></span>
+                </div>
+            </div>
+
+            <div class="col-md-12">
+                <div class="form-group">
+                    <input type="hidden" name="<?=$this->security->get_csrf_token_name();?>" value="<?=$this->security->get_csrf_hash();?>" />
+                    <input type="hidden" name="id" id="id" value="<?=$data->id;?>" />
+                    <button type="submit" class="btn btn-primary py-3 px-5">Update Account</button>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <div class="col-md-12">
+        <div class="form-group">
+            <input type="text" id="changed_email" name="changed_email" placeholder=" Enter new Destination"> &nbsp;&nbsp; 
+            <button type="submit" id="change_email" class="btn btn-primary py-1 px-3">Change Most Recent Offer's Destination</button>
+        </div>
+    </div>
+    <div class="col-md-12">
+        <div class="form-group">
+            <button type="submit" id="delete_account" name="delete_account" class="btn btn-primary py-1 px-3">Delete All My Posts</button></p>
+        </div>
+    </div>
+	<div class="col-md-12" id="response"></div>
 </section>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
@@ -73,6 +155,53 @@
             });
             return false;
         }); 
+
+        $("#register_customer").submit(function(event){
+            $(".err_span").html("");
+            event.preventDefault();
+            var formData = new FormData();
+            formData.append('licence', $('#licence').val());
+            formData.append('name', $('#name').val());
+            formData.append('email', $('#email').val());
+            formData.append('phone', $('#phone').val());
+            formData.append('gender', $('#gender').val());
+            formData.append('id', $('#id').val());
+            formData.append('password', $('#password').val());
+            formData.append('confirm_password', $('#confirm_password').val());
+            formData.append("<?=$this->security->get_csrf_token_name();?>", "<?=$this->security->get_csrf_hash();?>");
+            $.ajax({
+                type: "POST",
+                url: "<?php echo base_url('account/update_customer') ?>",
+                data: formData,
+                dataType : "json",
+                cache: false,
+                contentType: false,
+                processData: false,
+                success: function (response){
+                    if(response.status){
+                        $("#response").html(response.message);
+                        setTimeout(function(){ $("#response").html(""); }, 3000);
+                    }else{
+                        $("#err_name").html(response.message.name);
+                        $("#err_email").html(response.message.email);
+                        $("#err_phone").html(response.message.phone);
+                        $("#err_gender").html(response.message.gender);
+                        $("#err_licence").html(response.message.licence);
+                        $("#err_password").html(response.message.password);
+                        $("#err_confirm_password").html(response.message.confirm_password);
+                    }
+                }
+            });
+            return false;
+        });
     });
+
+    function isNumberKey(evt) {
+        var charCode = (evt.which) ? evt.which : event.keyCode
+        if (charCode > 31 && (charCode < 48 || charCode > 57))
+        return false;
+
+        return true;
+    }
     
 </script>

@@ -52,6 +52,7 @@ class Login extends CI_Controller {
                 'phone' => $result->phone,
                 'email' =>$result->email,
                 'status' =>$result->status,
+                'licence' =>$result->licence,
                 'is_login' => TRUE
             );
             $this->session->set_userdata($data);

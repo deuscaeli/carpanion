@@ -14,16 +14,20 @@ $customer_id=$this->session->userdata('id');
 if($customer_id){
     $customer_name=$this->session->userdata('name');
     $mymenu =  "<li class='nav-item ".isactive("")."'><a href='".base_url()."' class='nav-link'>Home</a></li>
-        <li class='nav-item ".isactive("account")."'><a href='".base_url()."account' class='nav-link'>Account</a></li>
         <li class='nav-item ".isactive("find_ride")."'><a href='".base_url()."find_ride' class='nav-link'>Find a ride</a></li>
         <li class='nav-item ".isactive("offer_ride")."'><a href='".base_url()."offer_ride' class='nav-link'>Offer a ride</a></li>
         <li class='nav-item ".isactive("contact")."'><a href='".base_url()."contact' class='nav-link'>Contact us</a></li>
-        <li class='nav-item active'><a href='#' class='nav-link'><b>Welcome $customer_name</b></a></li>
+        <li class='nav-item dropdown active'><a href='#' class='nav-link dropdown-toggle'  data-toggle='dropdown'><b>Welcome $customer_name</b></a>
+            <ul class='dropdown-menu dropdown-menu-right'>
+                <li class='nav-item dropdown-item ".isactive("account")."'><a href='".base_url()."account' class='nav-link'>Account</a></li>
+                <li class='nav-item dropdown-item ".isactive("my_rides")."'><a href='".base_url()."my_rides' class='nav-link'>My rides</a></li>
+                <li class='nav-item dropdown-item ".isactive("my_bookings")."'><a href='".base_url()."my_bookings' class='nav-link'>My bookings</a></li>
+            </ul>
+        </li>
         <li class='nav-item '><a href='".base_url()."login/logout' class='nav-link'>Logout</a></li>";
 }else{
     $base_url = base_url()."login";
     $mymenu =  "<li class='nav-item ".isactive('')."'><a href='".base_url()."' class='nav-link'>Home</a></li>
-        <li class='nav-item ".isactive("account")."'><a href='".base_url()."account' class='nav-link'>Accounts</a></li>
         <li class='nav-item ".isactive('find_ride')."'><a href='".base_url()."login' class='nav-link'>Find a ride</a></li>
         <li class='nav-item ".isactive('offer_ride')."'><a href='".base_url()."login' class='nav-link'>Offer a ride</a></li>
         <li class='nav-item ".isactive('contact')."'><a href='".base_url()."contact' class='nav-link'>Contact us</a></li>
@@ -33,6 +37,15 @@ if($customer_id){
             header("location: $base_url");
         }
         if(isactive("offer_ride")=="active"){
+            header("location: $base_url");
+        }
+        if(isactive("account")=="active"){
+            header("location: $base_url");
+        }
+        if(isactive("my_rides")=="active"){
+            header("location: $base_url");
+        }
+        if(isactive("my_bookings")=="active"){
             header("location: $base_url");
         }
 }
@@ -61,6 +74,7 @@ if($customer_id){
     <link rel="stylesheet" href="<?php echo base_url()."assets/";?>css/flaticon.css">
     <link rel="stylesheet" href="<?php echo base_url()."assets/";?>css/icomoon.css">
     <link rel="stylesheet" href="<?php echo base_url()."assets/";?>css/style.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark ftco-navbar-light scrolled awake" id="ftco-navbar">
@@ -168,5 +182,13 @@ if($customer_id){
     <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script> -->
     <!-- <script src="<?=base_url()."assets/"?>js/google-map.js"></script> -->
     <script src="<?=base_url()."assets/"?>js/main.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#intell_table1').DataTable({
+                aaSorting: [[0, 'desc']]
+            });
+        });
+    </script>
 </body>
 </html>

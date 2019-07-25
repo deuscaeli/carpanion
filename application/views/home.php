@@ -72,7 +72,7 @@
                 <div class="col-md d-flex justify-content-center counter-wrap ftco-animate">
                     <div class="block-18">
                     <div class="text">
-                        <strong class="number" data-number="5">0</strong>
+                        <strong class="number" data-number="<?=$riders;?>">0</strong>
                         <span>Drivers</span>
                     </div>
                     </div>
@@ -80,15 +80,15 @@
                 <div class="col-md d-flex justify-content-center counter-wrap ftco-animate">
                     <div class="block-18">
                     <div class="text">
-                        <strong class="number" data-number="25">0</strong>
-                        <span>Riders</span>
+                        <strong class="number" data-number="<?=$customer;?>">0</strong>
+                        <span>Customers</span>
                     </div>
                     </div>
                 </div>
                 <div class="col-md d-flex justify-content-center counter-wrap ftco-animate">
                     <div class="block-18">
                     <div class="text">
-                        <strong class="number" data-number="25">0</strong>
+                        <strong class="number" data-number="<?=$total_rides;?>">0</strong>
                         <span>Happy Rides</span>
                     </div>
                     </div>
@@ -96,8 +96,8 @@
                 <div class="col-md d-flex justify-content-center counter-wrap ftco-animate">
                     <div class="block-18">
                     <div class="text">
-                        <strong class="number" data-number="4">0</strong>
-                        <span>Staffs</span>
+                        <strong class="number" data-number="<?=$total_bookings;?>">0</strong>
+                        <span>Happy Bookings</span>
                     </div>
                     </div>
                 </div>

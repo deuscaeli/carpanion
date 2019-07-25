@@ -115,6 +115,7 @@
                         $("#err_leaving_date").html(response.message.leaving_date);
                         $("#err_leaving_time").html(response.message.leaving_time);
                         $("#err_seats").html(response.message.seats);
+                        $("#response").html(response.message.liacence_update);
                     }
                 }
             });
