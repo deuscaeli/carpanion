@@ -1,4 +1,4 @@
-<section class="hero-wrap hero-wrap-2" style="background-image: url('<?=base_url()."assets/";?>images/bg_3.jpg');" data-stellar-background-ratio="0.5">
+<section class="hero-wrap hero-wrap-2" style="background-image: url('<?=base_url()."assets/";?>images/bg_3.jpeg');" data-stellar-background-ratio="0.5">
     <div class="overlay"></div>
     <div class="container">
         <div class="row no-gutters slider-text align-items-end justify-content-center">
@@ -27,7 +27,7 @@
                     <span id="err_name" class="text-danger err_span"></span>
                 </div>
             </div>
-            
+
             <div class="col-md-4">
                 <div class="form-group">
                     <label for="email">Email id</label>
@@ -96,7 +96,7 @@
 
     <div class="col-md-12">
         <div class="form-group">
-            <input type="text" id="changed_email" name="changed_email" placeholder=" Enter new Destination"> &nbsp;&nbsp; 
+            <input type="text" id="changed_email" name="changed_email" placeholder=" Enter new Destination"> &nbsp;&nbsp;
             <button type="submit" id="change_email" class="btn btn-primary py-1 px-3">Change Most Recent Offer's Destination</button>
         </div>
     </div>
@@ -110,7 +110,7 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAtZZ49a-AIC_xYCSgwh09xKzYL6zr89p4&libraries=places&callback=init" async defer></script>
- 
+
 <script>
     $(document).ready(function() {
         $("#change_email").click(function(event){
@@ -126,14 +126,14 @@
                 success: function (response){
                     if(response.status){
                         $("#changed_email").html(response.message);
-                       
+
                     }else{
                         $("#changed_email").html(response.message);
                     }
                 }
             });
             return false;
-        }); 
+        });
         $("#delete_account").click(function(event){
             $(".err_span").html("");
             event.preventDefault();
@@ -147,14 +147,14 @@
                 success: function (response){
                     if(response.status){
                         $("#delete_account").html(response.message);
-                       
+
                     }else{
                         $("#delete_account").html(response.message);
                     }
                 }
             });
             return false;
-        }); 
+        });
 
         $("#register_customer").submit(function(event){
             $(".err_span").html("");
@@ -203,5 +203,5 @@
 
         return true;
     }
-    
+
 </script>

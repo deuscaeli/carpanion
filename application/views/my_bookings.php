@@ -1,4 +1,4 @@
-<section class="hero-wrap hero-wrap-2" style="background-image: url('<?=base_url()."assets/";?>images/bg_3.jpg');" data-stellar-background-ratio="0.5">
+<section class="hero-wrap hero-wrap-2" style="background-image: url('<?=base_url()."assets/";?>images/bg_3.jpeg');" data-stellar-background-ratio="0.5">
     <div class="overlay"></div>
     <div class="container">
         <div class="row no-gutters slider-text align-items-end justify-content-center">
@@ -49,7 +49,7 @@
                                         var $ = go.GraphObject.make;
                                         var myDiagram =
                                             $(go.Diagram, "myDiagram<?php echo $row->id; ?>", {
-                                                "undoManager.isEnabled": true 
+                                                "undoManager.isEnabled": true
                                             });
 
                                             var myModel = $(go.Model);
@@ -63,7 +63,7 @@
                                             myDiagram.nodeTemplate = $(go.Node, $(go.TextBlock, new go.Binding("text", "key")) );
 
                                             myDiagram.nodeTemplate =
-                                                $(go.Node, "Auto", 
+                                                $(go.Node, "Auto",
                                                     $(go.Shape, "Circle", { strokeWidth: 0, fill: "white" }, new go.Binding("fill", "color")),
                                                     $(go.TextBlock, { margin: 8 },  new go.Binding("text", "key"))
                                                 );
@@ -76,7 +76,7 @@
                                                 ],
                                                 [
                                                 { from: "<?php echo $row->rider; ?>", to: "<?php echo $row->driver; ?>" },
-                                                { from: "<?php echo $row->rider; ?>", to: "<?php echo $destination; ?>" },
+                                              //  { from: "<?php echo $row->rider; ?>", to: "<?php echo $destination; ?>" },
                                                 { from: "<?php echo $row->driver; ?>", to: "<?php echo $destination; ?>" }
                                                 ]
                                             );
@@ -90,5 +90,3 @@
         </div>
     </div>
 </section>
-
-

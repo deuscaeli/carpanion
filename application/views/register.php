@@ -1,4 +1,4 @@
-<section class="hero-wrap hero-wrap-2" style="background-image: url('<?=base_url()."assets/";?>images/bg_3.jpg');" data-stellar-background-ratio="0.5">
+<section class="hero-wrap hero-wrap-2" style="background-image: url('<?=base_url()."assets/";?>images/bg_2.jpeg');" data-stellar-background-ratio="0.5">
     <div class="overlay"></div>
     <div class="container">
         <div class="row no-gutters slider-text align-items-end justify-content-center">
@@ -30,7 +30,7 @@
                                     <span id="err_name" class="text-danger err_span"></span>
                                 </div>
                             </div>
-                            
+
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="email">Email id</label>
@@ -157,7 +157,7 @@
         }else{
             $("#"+name+id).val('');
             alert("Only images are allowed!");
-        }   
+        }
     }
 
 </script>

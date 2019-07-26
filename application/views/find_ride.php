@@ -1,4 +1,4 @@
-<section class="hero-wrap hero-wrap-2" style="background-image: url('<?=base_url()."assets/";?>images/bg_3.jpg');" data-stellar-background-ratio="0.5">
+<section class="hero-wrap hero-wrap-2" style="background-image: url('<?=base_url()."assets/";?>images/bg_2.jpeg');" data-stellar-background-ratio="0.5">
     <div class="overlay"></div>
     <div class="container">
         <div class="row no-gutters slider-text align-items-end justify-content-center">
@@ -62,7 +62,7 @@
                     <div id="result"></div>
                 </div>
             </div>
-            
+
             <div class="col-md-6 d-flex align-items-stretch pb-5 pb-md-0" style="position:relative;overflow:hidden;">
                 <div id="pickup_map"></div>
             </div></div>
@@ -89,7 +89,7 @@
                     if(response.status){
                         // $("#find_ride").hide();
                         $("#result").html(response.message);
-                        
+
                     }else{
                         $("#err_leaving_from").html(response.message.leaving_from);
                         $("#err_destination").html(response.message.destination);
@@ -151,8 +151,8 @@
 
     setTimeout(function(){
         $("#pickup_map").css("overflow","");
-        $("#pickup_map").css("position",""); 
-        $("#pickup_map").show(); 
+        $("#pickup_map").css("position","");
+        $("#pickup_map").show();
     }, 1000);
 
 
@@ -179,18 +179,18 @@
             zoom: 12
         });
 
-        
+
         directionsService = new google.maps.DirectionsService;
-        
+
         directionsDisplay = new google.maps.DirectionsRenderer;
 
         directionsDisplay.setMap(map_global.map);
 
 
-        map_global.pickup_autocomplete = initAutocomplete( 
+        map_global.pickup_autocomplete = initAutocomplete(
             document.getElementById('leaving_from')
         );
-        
+
         map_global.pickup_autocomplete.addListener('place_changed', function(){
             var place=this.getPlace();
             fillInAddress(place, document.getElementById('pickup_place_id'));
@@ -255,7 +255,7 @@
             title: title,
             icon:image
         });
-        
+
         setInfoContents(marker,place);
 
         return marker;
@@ -276,7 +276,7 @@
         }, function(response, status) {
             if (status === 'OK') {
                 directionsDisplay.setDirections(response);
-            } 
+            }
         });
     }
 
