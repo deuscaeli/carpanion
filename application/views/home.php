@@ -1,5 +1,5 @@
 <section class="home-slider owl-carousel js-fullheight">
-        <!--<div class="slider-item js-fullheight" style="background-image: url('<?=base_url()."assets/";?>images/bg_1.jpg')">
+        <!--<div class="slider-item js-fullheight" style="background-image: url('<?=base_url()."assets/";?>images/bg_1.jpeg')">
             <div class="overlay"></div>
             <div class="container">
             <div class="row slider-text js-fullheight justify-content-center align-items-center" data-scrollax-parent="true">
@@ -12,7 +12,7 @@
             </div>
         </div>
 -->
-        <div class="slider-item js-fullheight" style="background-image: url('<?=base_url()."assets/";?>images/bg_2.jpg')">
+        <div class="slider-item js-fullheight" style="background-image: url('<?=base_url()."assets/";?>images/bg_2.jpeg')">
             <div class="overlay"></div>
             <div class="container">
             <div class="row slider-text js-fullheight justify-content-center align-items-center" data-scrollax-parent="true">
@@ -26,7 +26,7 @@
             </div>
         </div>
 
-        <div class="slider-item js-fullheight" style="background-image: url('<?=base_url()."assets/";?>images/bg_3.jpg')">
+        <div class="slider-item js-fullheight" style="background-image: url('<?=base_url()."assets/";?>images/bg_3.jpeg')">
             <div class="overlay"></div>
             <div class="container">
             <div class="row slider-text justify-content-center align-items-center" data-scrollax-parent="true">
@@ -40,7 +40,7 @@
             </div>
         </div>
     </section>
-	
+
 
     <section class="ftco-section ftco-wrap-about ftco-no-pb">
         <div class="container">
@@ -48,7 +48,7 @@
                 <div class="col-sm-10 wrap-about ftco-animate text-center">
             <div class="heading-section mb-4 text-center">
             <span class="subheading">About</span>
-            <h2 class="mb-4">Car Panion</h2>
+            <h2 class="mb-4">CarPanion</h2>
             </div>
                     <p>runyurnbryutbyutnbyuntbyurbtunyunbyubyunyrunbuyrnbyubyubtnbuybrbrty</p>
 
@@ -62,8 +62,8 @@
         </div>
     </section>
 
-		
-    <section  class="ftco-section ftco-counter img" id="section-counter" style="background-image: url('<?=base_url()."assets/";?>images/bg_4.jpg')" data-stellar-background-ratio="0.5"> 
+
+    <section  class="ftco-section ftco-counter img" id="section-counter" style="background-image: url('<?=base_url()."assets/";?>images/bg_4.jpeg')" data-stellar-background-ratio="0.5">
     <!-- <section class="ftco-section ftco-counter img ftco-no-pt" id="section-counter"> -->
         <div class="container">
             <div class="row d-md-flex align-items-center justify-content-center">
@@ -85,7 +85,7 @@
                     </div>
                     </div>
                 </div>
-                <div class="col-md d-flex justify-content-center counter-wrap ftco-animate">
+            <!--    <div class="col-md d-flex justify-content-center counter-wrap ftco-animate">
                     <div class="block-18">
                     <div class="text">
                         <strong class="number" data-number="<?=$total_rides;?>">0</strong>
@@ -99,7 +99,7 @@
                         <strong class="number" data-number="<?=$total_bookings;?>">0</strong>
                         <span>Happy Bookings</span>
                     </div>
-                    </div>
+                  </div> -->
                 </div>
             </div>
         </div>
