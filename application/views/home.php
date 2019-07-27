@@ -18,7 +18,7 @@
             <div class="row slider-text js-fullheight justify-content-center align-items-center" data-scrollax-parent="true">
 
                 <div class="col-md-12 col-sm-12 text-center ftco-animate">
-                <h1 class="mb-4 mt-5">The Best Place to Kick of Your Day</h1>
+                <h1 class="mb-4 mt-5">A spamfree rideshare</h1>
                 <!-- <p><a href="#" class="btn btn-primary p-3 px-xl-4 py-xl-3">Order Now</a> <a href="#" class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3">View Menu</a></p> -->
                 </div>
 
@@ -32,7 +32,7 @@
             <div class="row slider-text justify-content-center align-items-center" data-scrollax-parent="true">
 
                 <div class="col-md-12 col-sm-12 text-center ftco-animate">
-                <h1 class="mb-4 mt-5">bgbgbgbgbgbgbgbgbgbgbgbg</h1>
+                <h1 class="mb-4 mt-5">Connect with others</h1>
                 <!-- <p><a href="#" class="btn btn-primary p-3 px-xl-4 py-xl-3">Order Now</a> <a href="#" class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3">View Menu</a></p> -->
                 </div>
 
@@ -50,7 +50,7 @@
             <span class="subheading">About</span>
             <h2 class="mb-4">CarPanion</h2>
             </div>
-                    <p>runyurnbryutbyutnbyuntbyurbtunyunbyubyunyrunbuyrnbyubyubtnbuybrbrty</p>
+                    <p>A CS411 Project</p>
 
                     <!--<div class="video justify-content-center">
                         <a href="https://vimeo.com/45830194" class="icon-video popup-vimeo d-flex justify-content-center align-items-center">
