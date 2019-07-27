@@ -55,6 +55,7 @@ if($customer_id){
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <title>CarPanion</title>
     <meta charset="utf-8">
@@ -76,11 +77,14 @@ if($customer_id){
     <link rel="stylesheet" href="<?php echo base_url()."assets/";?>css/style.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
 </head>
+
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark ftco-navbar-light scrolled awake" id="ftco-navbar">
         <div class="container">
             <a class="navbar-brand" href="<?=base_url()?>">CarPanion</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation"><span class="oi oi-menu"></span> Menu </button>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav"
+                aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation"><span
+                    class="oi oi-menu"></span> Menu </button>
 
             <div class="collapse navbar-collapse" id="ftco-nav">
                 <ul class="navbar-nav ml-auto">
@@ -156,13 +160,19 @@ if($customer_id){
             </div> -->
             <div class="row">
                 <div class="col-md-12 text-center">
-                    <p>Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This website is made with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://innefu.com" target="_blank">IDK</a>
+                    <p>Copyright &copy;<script>
+                        document.write(new Date().getFullYear());
+                        </script> All rights reserved | This website is made with <i class="icon-heart"
+                            aria-hidden="true"></i> by <a href="https://innefu.com" target="_blank">IDK</a>
                 </div>
             </div>
         </div>
     </footer>
 
-    <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+    <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px">
+            <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" />
+            <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10"
+                stroke="#F96D00" /></svg></div>
 
 
     <script src="<?=base_url()."assets/"?>js/jquery.min.js"></script>
@@ -184,11 +194,14 @@ if($customer_id){
     <script src="<?=base_url()."assets/"?>js/main.js"></script>
     <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
     <script>
-        $(document).ready(function() {
-            $('#intell_table1').DataTable({
-                aaSorting: [[0, 'desc']]
-            });
+    $(document).ready(function() {
+        $('#intell_table1').DataTable({
+            aaSorting: [
+                [0, 'desc']
+            ]
         });
+    });
     </script>
 </body>
+
 </html>
