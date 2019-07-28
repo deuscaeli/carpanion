@@ -10,12 +10,12 @@ class My_rides extends CI_Controller {
         $data = array();
         $customer_id=$this->session->userdata('id');
 	    $data['data'] = $this->db->query("SELECT * FROM rides where customer_id='$customer_id' order by id desc")->result();
-        $data['main_content'] = $this->load->view('my_ride',$data,true);
+        $data['main_content'] = $this->load->view('my_rides',$data,true);
         $this->load->view('index',$data);
     }
  
     function displayrecords(){
-        
+        $event_id = NULL;
         $table = '<div class="row">';
             if(count($event_id)){
                 $cou = 1;
