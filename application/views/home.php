@@ -48,10 +48,15 @@
 <section>
     <div id="homeDiagram" style="width:800px; height:800px; background-color: #DAE4E4;"></div>
     <script>
+    function shuffleArray(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
+        }
+    }
     var $ = go.GraphObject.make;
     var myDiagram =
-        $(go.Diagram, "homeDiagram",
-        {
+        $(go.Diagram, "homeDiagram", {
             "undoManager.isEnabled": true,
             "panningTool.isEnabled": false
         });
@@ -71,18 +76,18 @@
     var $links = [];
     var $nodes = [];
     <?php foreach ($users as $row): ?>
-        $nodes.push({
-            key: "<?php echo $row->name; ?>",
-            color: "lightblue"
-        })
+    $nodes.push({
+        key: "<?php echo $row->name; ?>",
+        color: "lightblue"
+    })
     <?php endforeach?>
-    
+
     <?php foreach ($locations as $row): ?>
     <?php $dest = explode(",", $row->destination); $destination = $dest[0];?>
-        $nodes.push({
-            key: "<?php echo $destination; ?>",
-            color: "lightgreen"
-        })
+    $nodes.push({
+        key: "<?php echo $destination; ?>",
+        color: "lightgreen"
+    })
     <?php endforeach?>
 
     <?php foreach ($data as $row): ?>
@@ -109,19 +114,20 @@
     //     }
     // );
     $links.push({
-            from: "<?php echo $row->rider; ?>",
-            to: "<?php echo $row->driver; ?>"
-        },
-        { from: "<?php echo $row->rider; ?>", to: "<?php echo $destination; ?>" },
-        {
-            from: "<?php echo $row->driver; ?>",
-            to: "<?php echo $destination; ?>"
-        }
-    );
+        from: "<?php echo $row->rider; ?>",
+        to: "<?php echo $row->driver; ?>"
+    }, {
+        from: "<?php echo $row->rider; ?>",
+        to: "<?php echo $destination; ?>"
+    }, {
+        from: "<?php echo $row->driver; ?>",
+        to: "<?php echo $destination; ?>"
+    });
     <?php endforeach?>
     // myModel.nodeDataArray = $nodes;
     myDiagram.model = myModel;
-    myDiagram.model = new go.GraphLinksModel($nodes,$links);
+    shuffleArray($nodes);
+    myDiagram.model = new go.GraphLinksModel($nodes, $links);
     print_r($nodes);
     </script>
 </section>
