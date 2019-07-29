@@ -72,6 +72,20 @@
                 margin: 8
             }, new go.Binding("text", "key"))
         );
+    myDiagram.linkTemplate =
+        $(go.Link, 
+            {
+                curve: go.Link.Bezier
+            }, 
+            // {
+            //     routing: go.Link.AvoidsNodes,
+            //     corner: 10
+            // },
+            $(go.Shape)
+            // $(go.Shape, {
+            //     toArrow: "Standard"
+            // }) //arrowhead setting
+        );
     var myModel = $(go.Model);
     var $links = [];
     var $nodes = [];
@@ -91,8 +105,7 @@
     <?php endforeach?>
 
     <?php foreach ($data as $row): ?>
-    <?php $dest = explode(",", $row->destination);
-        $destination = $dest[0];?> //parse the destination result to include only the first part
+    <?php $dest = explode(",", $row->destination); $destination = $dest[0];?> //parse the destination result to include only the first part
     // $nodes.push({
     //     key: "<?php echo $row->rider; ?>"
     // }, {
