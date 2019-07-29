@@ -1,17 +1,4 @@
 <section class="home-slider owl-carousel js-fullheight">
-    <!--<div class="slider-item js-fullheight" style="background-image: url('<?=base_url() . "assets/";?>images/bg_1.jpeg')">
-            <div class="overlay"></div>
-            <div class="container">
-            <div class="row slider-text js-fullheight justify-content-center align-items-center" data-scrollax-parent="true">
-
-                <div class="col-md-12 col-sm-12 text-center ftco-animate">
-                <h1 class="mb-4 mt-5">Our Delicious Specialties</h1>
-         S       </div>
-
-            </div>
-            </div>
-        </div>
--->
     <div class="slider-item js-fullheight"
         style="background-image: url('<?=base_url() . "assets/";?>images/bg_2.jpeg')">
         <div class="overlay"></div>
@@ -64,7 +51,7 @@
     myDiagram.allowVerticalScroll = false;
     myDiagram.nodeTemplate =
         $(go.Node, "Auto",
-            $(go.Shape, "Circle", {
+            $(go.Shape, "RoundedRectangle", {
                 strokeWidth: 0,
                 fill: "white"
             }, new go.Binding("fill", "color")),
@@ -77,10 +64,10 @@
             {
                 curve: go.Link.Bezier
             }, 
-            // {
-            //     routing: go.Link.AvoidsNodes,
-            //     corner: 10
-            // },
+            {
+                routing: go.Link.AvoidsNodes,
+                corner: 10
+            },
             $(go.Shape)
             // $(go.Shape, {
             //     toArrow: "Standard"
