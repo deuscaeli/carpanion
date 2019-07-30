@@ -73,7 +73,7 @@
 
                                         myDiagram.nodeTemplate =
                                             $(go.Node, "Auto",
-                                                $(go.Shape, "Circle", {
+                                                $(go.Shape, "RoundedRectangle", {
                                                     strokeWidth: 0,
                                                     fill: "white"
                                                 }, new go.Binding("fill", "color")),
