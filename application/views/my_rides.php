@@ -4,9 +4,9 @@
     <div class="container">
         <div class="row no-gutters slider-text align-items-end justify-content-center">
             <div class="col-md-9 ftco-animate text-center">
-                <h1 class="mb-2 bread">My rides</h1>
+                <h1 class="mb-2 bread">My Rides</h1>
                 <p class="breadcrumbs"><span class="mr-2"><a href="<?=base_url();?>">Home <i
-                                class="ion-ios-arrow-forward"></i></a></span> <span>My rides <i
+                                class="ion-ios-arrow-forward"></i></a></span> <span>My Rides <i
                             class="ion-ios-arrow-forward"></i></span></p>
             </div>
         </div>
@@ -20,7 +20,7 @@
             <div class="col-md-12 order-md-last ftco-animate makereservation p-4 p-md-5 pt-5" style="background:#fff;">
                 <div class="py-md-5">
                     <div class="heading-section ftco-animate mb-5">
-                        <h2 class="mb-4">My rides</h2>
+                        <h2 class="mb-4">My Rides</h2>
                     </div>
                     <div id="result">
                         <table class="table" style="width:100%" id="intell_table1">

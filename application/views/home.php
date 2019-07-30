@@ -141,12 +141,6 @@
                     <h2 class="mb-4">CarPanion</h2>
                 </div>
                 <p>A CS411 Project</p>
-
-                <!--<div class="video justify-content-center">
-                        <a href="https://vimeo.com/45830194" class="icon-video popup-vimeo d-flex justify-content-center align-items-center">
-                        <span class="ion-ios-play"></span>
-                    </a>
-                    </div>-->
             </div>
         </div>
     </div>

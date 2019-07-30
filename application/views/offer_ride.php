@@ -243,7 +243,7 @@ function fillInAddress(place, place_id_element) {
         map_global.map.fitBounds(place.geometry.viewport);
     } else {
         map_global.map.setCenter(place.geometry.location);
-        map_global.map.setZoom(12); // Why 17? Because it looks good.
+        map_global.map.setZoom(12);
     }
 }
 
