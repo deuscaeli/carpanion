@@ -52,7 +52,7 @@ class Find_ride extends CI_Controller {
             echo json_encode($response);
             exit();
         }else{
-            $event_id = $this->db->query("SELECT * FROM rides WHERE leaving_from = '$leaving_from' and destination = '$destination' and leaving_date = '$leaving_date' and id not in (select distinct(ride_id) from bookings) and customer_id <> $customer_id")->result();
+            $event_id = $this->db->query("SELECT * FROM rides WHERE leaving_from = " . $this->db->escape($leaving_from) . " and destination = " . $this->db->escape($destination) . " and leaving_date = '$leaving_date' and id not in (select distinct(ride_id) from bookings) and customer_id <> $customer_id")->result();
  
             $table = '<div class="row">';
             if(count($event_id)){
@@ -142,25 +142,23 @@ class Find_ride extends CI_Controller {
         $created_at = date('Y-m-d G:i:s');
         $updated_at = date('Y-m-d G:i:s');
  
-        $pkg= array(
-            'customer_id' => $customer_id,
-            'leaving_from' => $leaving_from,
-            'destination' => $destination,
-            'leaving_date' => $leaving_date,
-            'ride_id' => $ride_id,
-            'seats' => '',
-            'leaving_longitude' => $leaving_longitude,
-            'leaving_latitude' => $leaving_latitude,
-            'destination_longitude' => $destination_longitude,
-            'destination_latitude' => $destination_latitude,
-            'created_at' => $created_at,
-            'updated_at' => $updated_at,
-        );
-
- 
-         //$data = $this->security->xss_clean($pkg);
-         //$event_id = $this->db->insert('bookings',$pkg);
-        $event_id = $this->db->query("INSERT INTO bookings (customer_id, leaving_from, destination, leaving_date, ride_id, leaving_longitude, leaving_latitude, destination_longitude, destination_latitude, created_at, updated_at,seats) VALUES ('$customer_id', '$leaving_from', '$destination', '$created_at', '$ride_id', '$leaving_longitude', '$leaving_latitude', '$destination_longitude', '$destination_latitude', '$created_at', '$updated_at',1)");
+        // $pkg= array(
+        //     'customer_id' => $customer_id,
+        //     'leaving_from' => $leaving_from,
+        //     'destination' => $destination,
+        //     'leaving_date' => $leaving_date,
+        //     'ride_id' => $ride_id,
+        //     'seats' => '',
+        //     'leaving_longitude' => $leaving_longitude,
+        //     'leaving_latitude' => $leaving_latitude,
+        //     'destination_longitude' => $destination_longitude,
+        //     'destination_latitude' => $destination_latitude,
+        //     'created_at' => $created_at,
+        //     'updated_at' => $updated_at,
+        // );
+        //$data = $this->security->xss_clean($pkg);
+        //$event_id = $this->db->insert('bookings',$pkg);
+        $event_id = $this->db->query("INSERT INTO bookings (customer_id, leaving_from, destination, leaving_date, ride_id, leaving_longitude, leaving_latitude, destination_longitude, destination_latitude, created_at, updated_at,seats) VALUES ('$customer_id', " . $this->db->escape($leaving_from) . ", " . $this->db->escape($destination) . ", '$created_at', '$ride_id', '$leaving_longitude', '$leaving_latitude', '$destination_longitude', '$destination_latitude', '$created_at', '$updated_at',1)");
         //echo json_encode($event_id);die;
         $response['status']=true;
         $response['message']=" <div class='alert alert-success' style='width: 100%'> <i class='fa fa-check-circle'></i> Your ride has been booked for you. <button type='button' class='close' data-dismiss='alert' aria-label='Close'> <span aria-hidden='true'>×</span></button></div>";

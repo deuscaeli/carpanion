@@ -95,7 +95,7 @@ class Offer_ride extends CI_Controller {
             $event_id = $this->db->insert('rides',$data);
             // $destination = mysql_real_escape_string($destination);
             // $leaving_from = mysql_real_escape_string($leaving_from);
-            // $event_id = $this->db->query("INSERT INTO rides (customer_id, leaving_from, destination, leaving_date, leaving_time, seats, leaving_longitude, leaving_latitude, destination_longitude, destination_latitude, created_at, updated_at) VALUES ('$customer_id', '$leaving_from', '$destination', '$leaving_date', '$leaving_time', '$seats', '$leaving_longitude', '$leaving_latitude', '$destination_longitude', '$destination_latitude', '$created_at', '$updated_at')");
+            // $event_id = $this->db->query("INSERT INTO rides (customer_id, leaving_from, destination, leaving_date, leaving_time, seats, leaving_longitude, leaving_latitude, destination_longitude, destination_latitude, created_at, updated_at) VALUES ('$customer_id', ".$this->db->escape($leaving_from).", ".$this->db->escape($destination).", '$leaving_date', '$leaving_time', '$seats', '$leaving_longitude', '$leaving_latitude', '$destination_longitude', '$destination_latitude', '$created_at', '$updated_at')");
 
             $response['status']=true;
             $response['message']="<div class='alert alert-success' style='width: 100%'> <i class='fa fa-check-circle'></i> Your ride is active for finding. <button type='button' class='close' data-dismiss='alert' aria-label='Close'> <span aria-hidden='true'>×</span></button></div>";
