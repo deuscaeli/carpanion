@@ -49,11 +49,25 @@
         });
     myDiagram.allowHorizontalScroll = false;
     myDiagram.allowVerticalScroll = false;
+    var commonToolTip =
+        $("ToolTip",
+          $(go.Panel, "Vertical",
+            { margin: 3 },
+            $(go.TextBlock,  // bound to node data
+              { margin: 4, font: "bold 12pt sans-serif" },
+              new go.Binding("text")),
+            $(go.TextBlock,  // bound to Adornment because of call to Binding.ofObject
+              new go.Binding("text", "", function(ad) { return "Associated Trips: " + ad.adornedPart.linksConnected.count; }).ofObject())
+          )  // end Vertical Panel
+        );
     myDiagram.nodeTemplate =
-        $(go.Node, "Auto",
+        $(go.Node, "Auto", {
+            toolTip: commonToolTip
+        },
             $(go.Shape, "RoundedRectangle", {
                 strokeWidth: 0,
-                fill: "white"
+                fill: "white",
+                portId: ""
             }, new go.Binding("fill", "color")),
             $(go.TextBlock, {
                 margin: 8
