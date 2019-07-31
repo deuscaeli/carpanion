@@ -52,10 +52,14 @@
     var commonToolTip =
         $("ToolTip",
           $(go.Panel, "Vertical",
-            { margin: 3 },
-            $(go.TextBlock,  // bound to node data
-              { margin: 4, font: "bold 12pt sans-serif" },
-              new go.Binding("text")),
+            $(go.TextBlock, // bound to node data
+                new go.Binding("text", "color", function(co) {
+                    if (co=="lightgreen") {
+                        return "Destination";
+                    } else if (co=="lightblue") {
+                        return "User";
+                    }
+                })),
             $(go.TextBlock,  // bound to Adornment because of call to Binding.ofObject
               new go.Binding("text", "", function(ad) { return "Associated Trips: " + ad.adornedPart.linksConnected.count; }).ofObject())
           )  // end Vertical Panel
