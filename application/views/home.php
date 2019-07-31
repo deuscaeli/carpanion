@@ -96,7 +96,7 @@
             //     toArrow: "Standard"
             // }) //arrowhead setting
         );
-    var myModel = $(go.Model);
+    // var myModel = $(go.Model);
     var $links = [];
     var $nodes = [];
     <?php foreach ($users as $row): ?>
@@ -116,26 +116,6 @@
 
     <?php foreach ($data as $row): ?>
     <?php $dest = explode(",", $row->destination); $destination = $dest[0];?> //parse the destination result to include only the first part
-    // $nodes.push({
-    //     key: "<?php echo $row->rider; ?>"
-    // }, {
-    //     key: "<?php echo $row->driver; ?>"
-    // }, {
-    //     key: "<?php echo $destination; ?>"
-    // })
-    // $nodes.push({
-    //         key: "<?php echo $row->rider; ?>",
-    //         color: "lightblue"
-    //     },
-    //     {
-    //         key: "<?php echo $row->driver; ?>",
-    //         color: "orange"
-    //     },
-    //     {
-    //         key: "<?php echo $destination; ?>",
-    //         color: "lightgreen"
-    //     }
-    // );
     $links.push({
         from: "<?php echo $row->rider; ?>",
         to: "<?php echo $row->driver; ?>"
