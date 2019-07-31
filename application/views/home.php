@@ -103,7 +103,7 @@
     $nodes.push({
         key: "<?php echo $row->name; ?>",
         color: "lightblue"
-    })
+    });
     <?php endforeach?>
 
     <?php foreach ($locations as $row): ?>
@@ -111,7 +111,7 @@
     $nodes.push({
         key: "<?php echo $destination; ?>",
         color: "lightgreen"
-    })
+    });
     <?php endforeach?>
 
     <?php foreach ($data as $row): ?>
@@ -148,7 +148,7 @@
     });
     <?php endforeach?>
     // myModel.nodeDataArray = $nodes;
-    myDiagram.model = myModel;
+    // myDiagram.model = myModel;
     shuffleArray($nodes);
     myDiagram.model = new go.GraphLinksModel($nodes, $links);
     print_r($nodes);
