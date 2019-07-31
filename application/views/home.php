@@ -64,8 +64,13 @@
               new go.Binding("text", "", function(ad) { return "Associated Trips: " + ad.adornedPart.linksConnected.count; }).ofObject())
           )  // end Vertical Panel
         );
+    var forelayer = myDiagram.findLayer("Foreground");
+    myDiagram.addLayerBefore($(go.Layer, { name: "lightgreen" }), forelayer);
+    myDiagram.addLayerBefore($(go.Layer, { name: "lightblue" }), forelayer);
     myDiagram.nodeTemplate =
-        $(go.Node, "Auto", {
+        $(go.Node, "Auto", 
+        new go.Binding("layerName", "color"), 
+        {
             toolTip: commonToolTip
         },
             $(go.Shape, "RoundedRectangle", {
